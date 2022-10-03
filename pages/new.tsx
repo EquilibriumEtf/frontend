@@ -162,33 +162,34 @@ export default function NewVault() {
       })
 
       tx([msg], {}, () => {
-        setStep(3)
-      })
-    }
-  }, [etfFee, client, step])
-
-  const handleInstallBalancer = useCallback(async () => {
-    if (step !== 3) return
-    if (client && etfFee) {
-      const initMsg = {
-        base: {
-          memory_address:
-            ABSTRACT_DEPLOYMENTS[client.chainInfo.chain_id]['MEMORY'],
-        },
-        token_code_id: parseInt(process.env.NEXT_PUBLIC_CW20_CODE_ID!),
-        fee: (etfFee / 100).toString(),
-        provider_addr: wallet?.address!,
-      }
-
-      const msg = await installModuleMsg('balancer', initMsg, {
-        managerClient: managerClient!,
-      })
-
-      tx([msg], {}, () => {
+        // setStep(3)
         setStep(4)
       })
     }
   }, [etfFee, client, step])
+
+  // const handleInstallBalancer = useCallback(async () => {
+  //   if (step !== 3) return
+  //   if (client && etfFee) {
+  //     const initMsg = {
+  //       base: {
+  //         memory_address:
+  //           ABSTRACT_DEPLOYMENTS[client.chainInfo.chain_id]['MEMORY'],
+  //       },
+  //       token_code_id: parseInt(process.env.NEXT_PUBLIC_CW20_CODE_ID!),
+  //       fee: (etfFee / 100).toString(),
+  //       provider_addr: wallet?.address!,
+  //     }
+
+  //     const msg = await installModuleMsg('balancer', initMsg, {
+  //       managerClient: managerClient!,
+  //     })
+
+  //     tx([msg], {}, () => {
+  //       setStep(4)
+  //     })
+  //   }
+  // }, [etfFee, client, step])
 
   const handleRegisterAssets = useCallback(async () => {
     if (step !== 4) return
@@ -328,7 +329,7 @@ export default function NewVault() {
         </div>
       </fieldset>
 
-      <fieldset
+      {/* <fieldset
         className={classNames(
           step >= 3 ? 'opacity-100' : 'opacity-50 cursor-not-allowed',
           'mt-6',
@@ -346,7 +347,7 @@ export default function NewVault() {
             </Button>
           </div>
         </div>
-      </fieldset>
+      </fieldset> */}
 
       <fieldset
         className={classNames(
