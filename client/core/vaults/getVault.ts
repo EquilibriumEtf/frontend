@@ -46,6 +46,8 @@ export default async function getVault(
   const etfClient = new EtfQueryClient(cosmWasmClient, etf.address)
   const etfState = await etfClient.state()
 
+  console.log(etfState)
+
   const cw20Client = new Cw20QueryClient(
     cosmWasmClient,
     etfState.liquidity_token,
@@ -64,14 +66,14 @@ export default async function getVault(
   if (
     !process.env
       .NEXT_PUBLIC_ASSETS!.split(',')
-      .includes(baseAsset?.base_asset.asset!)
+      .includes(baseAsset?.base_asset.asset || '')
   )
     baseAsset = process.env.NEXT_PUBLIC_ASSETS!.split(',')[0]
 
   // Get value in $
   const assetData = await getAssetData(baseAsset as string)
   const value_dollar =
-    (parseInt(totalValue?.value!) / 1_000_000) * assetData.price
+    (parseInt(totalValue?.value || '0') / 1_000_000) * assetData.price
 
   // Return the vault info!
   return {
