@@ -81,7 +81,7 @@ export default async function getVault(
     info: info.info,
     module_infos: module_info.module_infos,
     value: {
-      amount: parseInt(totalValue?.value!),
+      amount: parseInt(totalValue?.value || '0'),
       denom: baseAsset as string,
     },
     cw20token: etfState.liquidity_token,
