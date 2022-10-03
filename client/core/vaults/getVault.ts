@@ -46,8 +46,6 @@ export default async function getVault(
   const etfClient = new EtfQueryClient(cosmWasmClient, etf.address)
   const etfState = await etfClient.state()
 
-  console.log(etfState)
-
   const cw20Client = new Cw20QueryClient(
     cosmWasmClient,
     etfState.liquidity_token,

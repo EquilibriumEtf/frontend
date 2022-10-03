@@ -43,7 +43,7 @@ export default class Vaults {
 
       const config = await factoryClient.config()
 
-      const osIds = Array.from(Array(config.next_os_id).keys())
+      const osIds = Array.from(Array(config.next_os_id).keys()).slice(22)
       osIds.shift()
 
       const arr = osIds.map(async (osId) => {

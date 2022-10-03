@@ -4,7 +4,8 @@ import EquilibriumProvider from 'client/react/client/EquilibriumProvider'
 import { WalletProvider as InternalWalletProvider } from '@cosmos-kit/react'
 import { wallets } from '@cosmos-kit/keplr'
 import { SignerOptions, WalletOption } from '@cosmos-kit/core'
-import { chains, assets } from 'chain-registry'
+import { assets } from 'chain-registry'
+import { chains } from 'config/chains'
 
 import { Modal } from 'components/modal'
 

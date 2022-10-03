@@ -44,7 +44,13 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
 
   const [refreshCounter, setRefreshCounter] = useState<number>(0)
 
-  const { currentWallet, connect, disconnect, currentChainName } = useWallet()
+  const {
+    currentWallet,
+    connect,
+    disconnect,
+    currentChainName,
+    setCurrentChain,
+  } = useWallet()
 
   const chain = chains.find((c) => c.chain_name === currentChainName)
   const asset = assets.find((a) => a.chain_name === currentChainName)
