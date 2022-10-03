@@ -73,7 +73,7 @@ export const Address = ({
           <a
             className="cursor-pointer text-black/50 dark:text-white/50 hover:text-black/75 dark:hover:text-white/75"
             href={extLink}
-            rel="noopener norefferer"
+            rel="noopener noreferrer"
             target="_blank"
           >
             <LinkIcon className="w-5 h-5" />

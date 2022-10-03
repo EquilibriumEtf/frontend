@@ -94,9 +94,10 @@ export function Modal({
                 </div>
                 <div>{children}</div>
                 <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                  {actions.map((action) => (
+                  {actions.map((action, key) => (
                     <ActionButton
                       {...action}
+                      key={key}
                       handleCloseModal={() => handleStateChange(false)}
                     />
                   ))}
