@@ -61,7 +61,7 @@ function customToast(
         className={classNames(
           t.visible ? 'animate-enter' : 'animate-leave',
           dismissable ? 'cursor-pointer' : '',
-          'group w-full max-w-sm bg-white dark:bg-black border border-black/10 dark:border-white/10 shadow-lg rounded-lg pointer-events-auto p-4',
+          'group w-full max-w-sm bg-opacity-90 [backdrop-filter:blur(10px)] border border-black/10 dark:border-white/10 shadow-lg rounded-lg pointer-events-auto p-4',
         )}
       >
         <div className="flex items-start">

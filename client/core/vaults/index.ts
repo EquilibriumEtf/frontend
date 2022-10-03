@@ -83,7 +83,8 @@ export default class Vaults {
       const result = await Promise.all(arr)
       return result.filter((item) => item?.owner === owner)
     } catch {
-      throw new Error('Error fetching vaults')
+      // throw new Error('Error fetching vaults')
+      console.error('Error fetching vaults')
     }
   }
 
@@ -100,7 +101,8 @@ export default class Vaults {
         versionControlClient,
       })
     } catch {
-      throw new Error('Error fetching vault')
+      // throw new Error('Error fetching vault')
+      console.error('Error fetching vault')
     }
   }
 
@@ -117,7 +119,8 @@ export default class Vaults {
         versionControlClient,
       })
     } catch {
-      throw new Error('Error fetching shares')
+      // throw new Error('Error fetching shares')
+      console.error('Error fetching shares')
     }
   }
 }

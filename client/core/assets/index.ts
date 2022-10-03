@@ -44,7 +44,8 @@ export default class Assets {
 
       return finalizedData
     } catch {
-      throw new Error('Error fetching assets')
+      // throw new Error('Error fetching assets')
+      console.error('Error fetching assets')
     }
   }
 
@@ -66,7 +67,8 @@ export default class Assets {
 
       return { token: assetData, historical }
     } catch {
-      throw new Error('Error fetching asset')
+      // throw new Error('Error fetching asset')
+      console.error('Error fetching asset')
     }
   }
 }
