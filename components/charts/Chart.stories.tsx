@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Chart } from './Chart'
+import Chart from './Chart'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -18,7 +18,3 @@ const Template: ComponentStory<typeof Chart> = (args) => <Chart {...args} />
 
 export const Primary = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
-  width: 750,
-  height: 500,
-}
