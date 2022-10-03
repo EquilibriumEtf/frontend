@@ -20,7 +20,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
   )
 
   return (
-    <div className="min-h-screen text-black bg-white dark:bg-black dark:text-white dark">
+    <div className="min-h-screen text-black bg-white dark:bg-black dark:text-white">
       <Navbar navigation={navigation} />
       <div className="lg:min-h-[90vh]">{children}</div>
       <Footer />

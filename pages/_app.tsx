@@ -9,7 +9,7 @@ import { TxProvider } from 'contexts/tx'
 
 const EquilibriumApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <>
+    <main className="dark">
       <Toaster position="top-right" />
       <WalletProvider>
         <ThemeProvider>
@@ -20,7 +20,7 @@ const EquilibriumApp = ({ Component, pageProps }: AppProps) => {
           </TxProvider>
         </ThemeProvider>
       </WalletProvider>
-    </>
+    </main>
   )
 }
 
