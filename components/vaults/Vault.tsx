@@ -14,6 +14,7 @@ export interface VaultTypes {
   change?: number
   href?: string
   large?: boolean
+  small?: boolean
   divider?: string
   dataset?: number[]
   graph?: boolean
@@ -40,6 +41,7 @@ export const Vault = ({
   change,
   href = '#',
   large,
+  small,
   divider = 'share',
   dataset,
   graph = true,
@@ -84,7 +86,11 @@ export const Vault = ({
     <Link href={href}>
       <div
         className={classNames(
-          large ? 'w-[24rem] flex flex-row space-x-4' : 'w-[12rem]',
+          large
+            ? 'w-[24rem] flex flex-row space-x-4'
+            : small
+            ? 'w-[8rem]'
+            : 'w-[12rem]',
           'bg-white dark:bg-black flex-shrink-0 cursor-pointer hover:bg-black/10 overflow-visible dark:hover:bg-white/10 transition-all duration-75 ease-in-out border rounded-md border-white/25 hover:border-primary',
         )}
       >

@@ -282,6 +282,7 @@ export default function VaultDetail() {
                     href={`https://info.osmosis.zone/token/${asset.symbol}`}
                     image={`https://raw.githubusercontent.com/cosmos/chain-registry/master/${asset.name.toLowerCase()}/images/${asset.symbol.toLowerCase()}.png`}
                     graph={false}
+                    small
                   />
                 ))}
           </div>

@@ -144,7 +144,7 @@ export default function NewVault() {
     step,
   ])
 
-  const handleInstallModule = useCallback(async () => {
+  const handleInstallETF = useCallback(async () => {
     if (step !== 2) return
     if (client && etfFee) {
       const initMsg = {
@@ -167,8 +167,31 @@ export default function NewVault() {
     }
   }, [etfFee, client, step])
 
-  const handleRegisterAssets = useCallback(async () => {
+  const handleInstallBalancer = useCallback(async () => {
     if (step !== 3) return
+    if (client && etfFee) {
+      const initMsg = {
+        base: {
+          memory_address:
+            ABSTRACT_DEPLOYMENTS[client.chainInfo.chain_id]['MEMORY'],
+        },
+        token_code_id: parseInt(process.env.NEXT_PUBLIC_CW20_CODE_ID!),
+        fee: (etfFee / 100).toString(),
+        provider_addr: wallet?.address!,
+      }
+
+      const msg = await installModuleMsg('balancer', initMsg, {
+        managerClient: managerClient!,
+      })
+
+      tx([msg], {}, () => {
+        setStep(4)
+      })
+    }
+  }, [etfFee, client, step])
+
+  const handleRegisterAssets = useCallback(async () => {
+    if (step !== 4) return
     if (managerClient && osId) {
       const msg = await registerAssets({ managerClient })
 
@@ -298,7 +321,7 @@ export default function NewVault() {
         </p>
         <div className="grid grid-cols-1 gap-4 p-4 mt-2 rounded-md bg-black/10 dark:bg-white/10">
           <div className="flex flex-row justify-end">
-            <Button onClick={handleInstallModule} variant="secondary">
+            <Button onClick={handleInstallETF} variant="secondary">
               Install Module
             </Button>
           </div>
@@ -308,6 +331,26 @@ export default function NewVault() {
       <fieldset
         className={classNames(
           step >= 3 ? 'opacity-100' : 'opacity-50 cursor-not-allowed',
+          'mt-6',
+        )}
+      >
+        <h3 className="text-xl font-medium">Install Balancer module</h3>
+        <p className="text-black/50 dark:text-white/50">
+          Install the balancer module onto your OS to automatically rebalance
+          your ETF.
+        </p>
+        <div className="grid grid-cols-1 gap-4 p-4 mt-2 rounded-md bg-black/10 dark:bg-white/10">
+          <div className="flex flex-row justify-end">
+            <Button onClick={handleInstallBalancer} variant="secondary">
+              Install Module
+            </Button>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset
+        className={classNames(
+          step >= 4 ? 'opacity-100' : 'opacity-50 cursor-not-allowed',
           'mt-6',
         )}
       >
